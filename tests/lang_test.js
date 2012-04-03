@@ -230,10 +230,13 @@
 			person = {
 				name: 'Bob'
 			};
+      lang.setObject('person.name','Big Bob');
 
 			wru.assert('should return replaced string#object               ', lang.replace('My name is {name}', person) === 'My name is Bob');
 			wru.assert('should return replaced string#array                ', lang.replace('My name is {0} {1}', ['Bob', 'Bober']) === 'My name is Bob Bober');
 			wru.assert('should return replaced string#with custom patterns ', lang.replace('My name is #{0} #{1}', ['Bob', 'Bober'], pattern) === 'My name is Bob Bober');
+
+			wru.assert('should return replaced string#global               ', lang.replace('My name is {person.name}') === 'My name is Big Bob');
 		}
 	},
 	{
